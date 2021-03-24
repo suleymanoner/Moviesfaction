@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1024943768431",
+    "firebase_url": "https://moviesfaction-default-rtdb.firebaseio.com",
+    "project_id": "moviesfaction",
+    "storage_bucket": "moviesfaction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024943768431:android:887af54fe1a63002115e9a",
+        "android_client_info": {
+          "package_name": "com.example.moviesfaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024943768431-mh5vo2gmq4e4g5l16cjqeou9dfocfo2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCRFb5yeG0v5eA2UR8ELzzbDEex166LNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024943768431-mh5vo2gmq4e4g5l16cjqeou9dfocfo2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
