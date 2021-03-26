@@ -8,6 +8,23 @@
     tools:context=".view.FeedActivity"
     android:orientation="vertical">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></Space>
+
+    <Button
+        android:id="@+id/nextPage"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/button_style"
+        android:text="Next Page" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></Space>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

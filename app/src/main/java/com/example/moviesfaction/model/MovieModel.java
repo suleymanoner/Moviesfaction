@@ -14,6 +14,12 @@ public class MovieModel {
     @SerializedName("page")
     public int page;
 
+    @SerializedName("total_pages")
+    public int total_page;
+
+    @SerializedName("total_results")
+    public int total_results;
+
     public List<Results> getResults() {
         return results;
     }

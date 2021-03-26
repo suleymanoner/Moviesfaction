@@ -24,8 +24,28 @@ public interface ApiService {
     Call<MovieModel> search(
             @Path("category") String category,
             @Query("api_key") String api_key,
-            @Query("query") String searchWord
+            @Query("query") String searchWord,
+            @Query("page") int page
     );
+
+
+    //https://api.themoviedb.org/3/movie/popular?api_key=1bf3c5469807a4b8cb7a0a8a888014b0&page=1
+
+
+    @GET("/3/movie/{category}")
+    Call<MovieModel> getPages(
+      @Path("category") String category,
+      @Query("api_key") String api_key,
+      @Query("page") int page
+    );
+
+
+
+
+
+
+
+
 
     /*
     @GET("/3/movie/{movie_id}")

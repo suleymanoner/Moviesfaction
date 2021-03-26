@@ -1,19 +1,24 @@
 package com.example.moviesfaction.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.adapter.SpaceItemDecorator;
 import com.example.moviesfaction.adapter.RecyclerViewAdapter;
 import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.service.ApiService;
+import com.google.protobuf.Api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,8 @@ public class FeedActivity extends AppCompatActivity {
     ImageView searchImageView;
     ImageView accountImageView;
     ImageView homeImageView;
+    Button nextPage;
+    public int page=1;
 
     public String BASE_URL = "https://api.themoviedb.org";
     public String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
@@ -38,6 +45,9 @@ public class FeedActivity extends AppCompatActivity {
 
     public ArrayList<MovieModel.Results> movieResults;
     public RecyclerView recyclerView;
+
+    ApiService apiService;
+    Call<MovieModel> model;
 
 
     @Override
@@ -49,6 +59,7 @@ public class FeedActivity extends AppCompatActivity {
         searchImageView = findViewById(R.id.searchImageView);
         accountImageView = findViewById(R.id.accountImageView);
         homeImageView = findViewById(R.id.homeListImageView);
+        nextPage= findViewById(R.id.nextPage);
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -74,17 +85,27 @@ public class FeedActivity extends AppCompatActivity {
         });
 
 
-        loadMovies();
+
+
+        nextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadMovies(page++);
+            }
+        });
+
+
+        loadMovies(1);
     }
 
 
-    public void loadMovies(){
+    public void loadMovies(int page){
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<MovieModel> movieCall = apiService.getMovies("popular", API_KEY);
+        Call<MovieModel> modelC = apiService.getPages("popular",API_KEY,page);
 
-        movieCall.enqueue(new Callback<MovieModel>() {
+        modelC.enqueue(new Callback<MovieModel>() {
             @Override
             public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {
 
@@ -97,9 +118,9 @@ public class FeedActivity extends AppCompatActivity {
                     RecyclerViewAdapter adapter = new RecyclerViewAdapter(movieResults,getApplicationContext());
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(layoutManager);
-                    SpaceItemDecorator decorator = new SpaceItemDecorator(5);
-                    recyclerView.addItemDecoration(decorator);
-                    //recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    //SpaceItemDecorator decorator = new SpaceItemDecorator(5);
+                    //recyclerView.addItemDecoration(decorator);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
 
 
@@ -108,9 +129,18 @@ public class FeedActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MovieModel> call, Throwable t) {
-
+                Toast.makeText(FeedActivity.this, "Data couldn't load!", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    public Call<MovieModel> nextPage(){
+
+        page++;
+        Call<MovieModel> call = apiService.getPages("popular",API_KEY,page);
+        return call;
+
     }
 
 }

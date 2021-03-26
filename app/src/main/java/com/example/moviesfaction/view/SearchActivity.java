@@ -38,6 +38,8 @@ public class SearchActivity extends AppCompatActivity {
     ImageView searchImage;
     ImageView accountImage;
     ImageView homeImage;
+    Button nextPageSearch;
+    int page=1;
 
     RecyclerView recyclerView2;
     ArrayList<MovieModel.Results> searchResults;
@@ -60,6 +62,7 @@ public class SearchActivity extends AppCompatActivity {
         searchImage = findViewById(R.id.searchImageView3);
         accountImage = findViewById(R.id.accountImageView3);
         homeImage = findViewById(R.id.homeListImageView3);
+        nextPageSearch = findViewById(R.id.nextPageSearchButton);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -69,7 +72,7 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                search();
+                search(1);
             }
         });
 
@@ -89,9 +92,17 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        nextPageSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search(page++);
+            }
+        });
+
+
     }
 
-    public void search(){
+    public void search(int page){
 
         ApiService apiService = retrofit.create(ApiService.class);
 
@@ -100,7 +111,7 @@ public class SearchActivity extends AppCompatActivity {
         }
         else{
 
-            Call<MovieModel> modelCall = apiService.search("movie",API_KEY,searchEditText.getText().toString());
+            Call<MovieModel> modelCall = apiService.search("movie",API_KEY,searchEditText.getText().toString(),page);
 
             modelCall.enqueue(new Callback<MovieModel>() {
                 @Override
@@ -112,11 +123,18 @@ public class SearchActivity extends AppCompatActivity {
                         List<MovieModel.Results> results = model.getResults();
                         searchResults = new ArrayList<>(results);
 
-                        RecyclerViewAdapter adapter = new RecyclerViewAdapter(searchResults,getApplicationContext());
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                        recyclerView2.setLayoutManager(layoutManager);
-                        recyclerView2.setItemAnimator(new DefaultItemAnimator());
-                        recyclerView2.setAdapter(adapter);
+                        if(model.total_page >= page){
+                            RecyclerViewAdapter adapter = new RecyclerViewAdapter(searchResults,getApplicationContext());
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                            recyclerView2.setLayoutManager(layoutManager);
+                            recyclerView2.setItemAnimator(new DefaultItemAnimator());
+                            recyclerView2.setAdapter(adapter);
+                        }
+                        else{
+                            Toast.makeText(SearchActivity.this, "There is no more!", Toast.LENGTH_SHORT).show();
+                        }
+
+
 
                     }
 
