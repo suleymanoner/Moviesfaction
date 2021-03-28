@@ -9,48 +9,97 @@
 
     <TextView
         android:id="@+id/emailTitleTXT2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
-        android:text="Email       :"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
+        android:text="Email"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/surnameTitleText2" />
 
     <TextView
-        android:id="@+id/surnameTitleText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:text="Surname :"
+        android:id="@+id/surnameEmptyTXT"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/surnameTitleText2"
+        app:layout_constraintTop_toBottomOf="@+id/nameEmptyTXT" />
+
+    <TextView
+        android:id="@+id/nameEmptyTXT"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/nameTitleText2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameTitleText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:layout_marginTop="148dp"
-        android:text="Name      :"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
+        android:text="Name"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/emailEmptyTXT"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/emailTitleTXT2"
+        app:layout_constraintTop_toBottomOf="@+id/surnameEmptyTXT" />
+
+    <TextView
+        android:id="@+id/surnameTitleText2"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_style"
+        android:fontFamily="@font/raleway"
+        android:text="Surname"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTitleText2" />
 
     <TextView
         android:id="@+id/signOutTitleTXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="368dp"
+        android:fontFamily="@font/raleway"
         android:text="Sign out?"
         android:textColor="@color/white"
         android:textSize="14sp"
@@ -64,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="328dp"
+        android:fontFamily="@font/raleway"
         android:text="Reset Password?"
         android:textColor="@color/white"
         android:textSize="14sp"
@@ -72,57 +122,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/accountTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Account"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/surnameEmptyTXT"
-        android:layout_width="240dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="204dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/nameEmptyTXT"
-        android:layout_width="240dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="148dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/emailEmptyTXT"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="256dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -160,6 +162,16 @@
             android:paddingTop="10dp"
             app:srcCompat="@drawable/account_new" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/accountTitleImage"
+        android:layout_width="193dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/account_title_image" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

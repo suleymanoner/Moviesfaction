@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    TextView signupTitleText;
+    ImageView signupTitleImage;
     TextView nameTitleText;
     EditText nameEditText;
     TextView surnameTitleText;
@@ -45,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        signupTitleText = findViewById(R.id.signupTitleText);
+        signupTitleImage = findViewById(R.id.signupTitleImage);
         nameTitleText = findViewById(R.id.nameTitleText);
         nameEditText = findViewById(R.id.nameEditText);
         surnameTitleText = findViewById(R.id.surnameTitleText);

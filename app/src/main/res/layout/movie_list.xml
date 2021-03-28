@@ -27,7 +27,7 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/moviePosterListImage"
+                android:id="@+id/postermimagelist"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_weight="1"
@@ -60,26 +60,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/addListImage"
-                android:layout_width="47dp"
-                android:layout_height="25dp"
-                android:layout_gravity="end"
-                android:paddingRight="5dp"
-                app:srcCompat="@drawable/add_icon_image" />
-
             <TextView
-                android:id="@+id/movieTitleListText"
+                android:id="@+id/movietitlelist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="5dp"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/movieDateListText"
+                android:id="@+id/moviedatelist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -90,7 +83,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/movieOverviewListText"
+                android:id="@+id/movieoverviewlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"

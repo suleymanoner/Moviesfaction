@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.audiofx.AcousticEchoCanceler;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,12 +22,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class AccountActivity extends AppCompatActivity {
 
-    TextView accountTitle;
+    ImageView accountTitleImage;
     TextView nameTitle;
     TextView surnameTitle;
     TextView emailTitle;
@@ -49,7 +46,7 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        accountTitle = findViewById(R.id.accountTitleText);
+        accountTitleImage = findViewById(R.id.accountTitleImage);
         nameTitle = findViewById(R.id.nameTitleText2);
         surnameTitle = findViewById(R.id.surnameTitleText2);
         emailTitle = findViewById(R.id.emailTitleTXT);

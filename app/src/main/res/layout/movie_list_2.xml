@@ -13,20 +13,20 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
             android:layout_weight="4" />
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="250dp"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="2dp"
+            android:layout_height="2dp"
             android:layout_weight="3" />
 
         <ImageView
@@ -44,6 +44,7 @@
         android:id="@+id/movieNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -55,6 +56,7 @@
         android:id="@+id/dateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
         android:paddingEnd="10dp"
         android:text="Date"
         android:textAlignment="textEnd"
@@ -65,6 +67,7 @@
         android:id="@+id/overviewText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway"
         android:paddingLeft="7dp"
         android:paddingTop="10dp"
         android:paddingRight="7dp"

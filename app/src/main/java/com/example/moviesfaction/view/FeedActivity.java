@@ -10,15 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moviesfaction.R;
-import com.example.moviesfaction.adapter.SpaceItemDecorator;
 import com.example.moviesfaction.adapter.RecyclerViewAdapter;
 import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.service.ApiService;
-import com.google.protobuf.Api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FeedActivity extends AppCompatActivity {
+public class FeedActivity extends AppCompatActivity{
 
     ImageView userListImageView;
     ImageView searchImageView;
@@ -39,15 +36,12 @@ public class FeedActivity extends AppCompatActivity {
     public int page=1;
 
     public String BASE_URL = "https://api.themoviedb.org";
-    public String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
+    public static final String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
     public String API_KEY = "1bf3c5469807a4b8cb7a0a8a888014b0";
     public Retrofit retrofit;
 
     public ArrayList<MovieModel.Results> movieResults;
     public RecyclerView recyclerView;
-
-    ApiService apiService;
-    Call<MovieModel> model;
 
 
     @Override
@@ -71,7 +65,7 @@ public class FeedActivity extends AppCompatActivity {
         searchImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                Intent intent = new Intent(FeedActivity.this,SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -84,9 +78,6 @@ public class FeedActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,9 +85,20 @@ public class FeedActivity extends AppCompatActivity {
             }
         });
 
+        userListImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FeedActivity.this,ListActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        loadMovies(1);
+
+
+        loadMovies(page);
+
     }
+
 
 
     public void loadMovies(int page){
@@ -123,7 +125,6 @@ public class FeedActivity extends AppCompatActivity {
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
 
-
                 }
             }
 
@@ -135,12 +136,6 @@ public class FeedActivity extends AppCompatActivity {
 
     }
 
-    public Call<MovieModel> nextPage(){
 
-        page++;
-        Call<MovieModel> call = apiService.getPages("popular",API_KEY,page);
-        return call;
-
-    }
 
 }

@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moviesfaction">
-        <activity android:name=".view.AccountActivity"></activity>
-        <activity android:name=".view.SearchActivity"
-                  android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".view.ListActivity"></activity>
+        <activity android:name=".view.AccountActivity" />
+        <activity
+            android:name=".view.SearchActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.SignUpActivity" />
         <activity android:name=".view.FeedActivity" />
         <activity android:name=".view.FirstActivity">
