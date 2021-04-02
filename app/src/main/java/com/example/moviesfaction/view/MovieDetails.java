@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MovieDetails extends AppCompatActivity {
 
-    ImageView imageView;
+    ImageView movieDetailsPoster;
+    ImageView movieDetailsTitleImage;
     TextView titleDetails;
     TextView languageDetails;
     TextView voteDetails;
@@ -42,7 +44,8 @@ public class MovieDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        imageView = findViewById(R.id.imageView);
+        movieDetailsPoster = findViewById(R.id.movieDetailsPosterImage);
+        movieDetailsTitleImage = findViewById(R.id.movieDetailsTitleImage);
         titleDetails = findViewById(R.id.titleDetails);
         languageDetails = findViewById(R.id.languageDetails);
         voteDetails = findViewById(R.id.voteDetails);
@@ -74,9 +77,9 @@ public class MovieDetails extends AppCompatActivity {
                     String posterPath = model.getPoster_path();
 
                     if (posterPath == null) {
-                        imageView.setImageDrawable(MovieDetails.this.getDrawable(R.drawable.no_poster));
+                        movieDetailsPoster.setImageDrawable(MovieDetails.this.getDrawable(R.drawable.no_poster));
                     } else {
-                        Glide.with(MovieDetails.this).load(FeedActivity.BASE_PHOTO_URL + posterPath).into(imageView);
+                        Glide.with(MovieDetails.this).load(FeedActivity.BASE_PHOTO_URL + posterPath).into(movieDetailsPoster);
                     }
 
                     titleDetails.setText(model.getOriginal_title());

@@ -39,12 +39,8 @@ public class ListAdapter extends ArrayAdapter<List> {
 
         TextView title = convertView.findViewById(R.id.movietitlelist);
         ImageView poster = convertView.findViewById(R.id.postermimagelist);
-        TextView date = convertView.findViewById(R.id.moviedatelist);
-        TextView overview = convertView.findViewById(R.id.movieoverviewlist);
 
         title.setText(getItem(position).getTitle());
-        date.setText(getItem(position).getDate());
-        overview.setText(getItem(position).getOverview());
         Glide.with(context).load(FeedActivity.BASE_PHOTO_URL + getItem(position).getPosterpath()).into(poster);
 
         return convertView;

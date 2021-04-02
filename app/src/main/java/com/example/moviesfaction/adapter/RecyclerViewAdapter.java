@@ -2,6 +2,8 @@ package com.example.moviesfaction.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ArrayList<MovieModel.Results> resultList;
     public Context context;
     public int pos = -1;
+    public static SharedPreferences sharedPreferences;
 
 
     public RecyclerViewAdapter(ArrayList<MovieModel.Results> list, Context context) {
@@ -88,7 +91,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.addIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(context, "You clicked : " + finalPosition, Toast.LENGTH_SHORT).show();
                     pos = holder.getAdapterPosition();
                     showPopup(v);
                 }
@@ -110,22 +112,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public boolean onMenuItemClick(MenuItem item) {
 
-        // Here I need to position of clicked item in Recyclerview, and I will get title, date etc.
 
         if(item.getItemId() == R.id.menuAdd){
 
-            // Find here to get position of clicked movie.
             String title = resultList.get(pos).getTitle();
-            String date = resultList.get(pos).getRelease_date();
-            String overview = resultList.get(pos).getOverview();
             String posterpath = resultList.get(pos).getPoster_path();
 
+            sharedPreferences = context.getSharedPreferences("Save", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(String.valueOf(1),title);
+            editor.putString(String.valueOf(2),posterpath);
+            editor.apply();
+
             Intent intent1 = new Intent(context,ListActivity.class);
-            intent1.putExtra("title",title);
-            intent1.putExtra("date",date);
-            intent1.putExtra("overview",overview);
-            intent1.putExtra("posterpath",posterpath);
             context.startActivity(intent1);
+
             return true;
 
         }

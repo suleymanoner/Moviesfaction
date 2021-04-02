@@ -38,7 +38,7 @@ public class FeedActivity extends AppCompatActivity {
     ImageView accountImageView;
     ImageView homeImageView;
     Button nextPage;
-    public int page=1;
+    int page=1;
 
     public String BASE_URL = "https://api.themoviedb.org";
     public static final String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
@@ -98,11 +98,10 @@ public class FeedActivity extends AppCompatActivity {
         });
 
 
-
         loadMovies(page);
 
-    }
 
+    }
 
 
     public void loadMovies(int page){
@@ -139,13 +138,4 @@ public class FeedActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
-
-
-
-
-
 }
