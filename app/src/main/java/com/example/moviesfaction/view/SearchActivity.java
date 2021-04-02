@@ -92,6 +92,14 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        listImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchActivity.this,ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         nextPageSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -37,25 +37,26 @@ public class ListActivity extends AppCompatActivity {
         accountIcon = findViewById(R.id.accountImageViewList);
 
 
+        Intent intent = getIntent();
+        String title = intent.getStringExtra("title");
+        String date = intent.getStringExtra("date");
+        String overview = intent.getStringExtra("overview");
+        String posterpath = intent.getStringExtra("posterpath");
 
 
 
-        while(true){
 
-            Intent intent = getIntent();
-            String title = intent.getStringExtra("title");
-            String date = intent.getStringExtra("date");
-            String overview = intent.getStringExtra("overview");
-            String posterpath = intent.getStringExtra("posterpath");
 
-            ArrayList<List> list = new ArrayList<>();
-            list.add(new List(title,date,overview,posterpath));
-            ListAdapter listAdapter = new ListAdapter(this,R.layout.movie_list,list);
+        ArrayList<List> list = new ArrayList<>();
 
-            listView.setAdapter(listAdapter);
+        //List list1 = ;
 
-            break;
-        }
+        list.add(new List(title,date,overview,posterpath));
+
+        ListAdapter listAdapter = new ListAdapter(this,R.layout.movie_list,list);
+
+        listView.setAdapter(listAdapter);
+
 
 
 

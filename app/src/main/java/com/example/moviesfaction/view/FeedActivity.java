@@ -1,5 +1,6 @@
 package com.example.moviesfaction.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,12 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.moviesfaction.R;
+import com.example.moviesfaction.adapter.ListAdapter;
 import com.example.moviesfaction.adapter.RecyclerViewAdapter;
 import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.service.ApiService;
@@ -26,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FeedActivity extends AppCompatActivity{
+public class FeedActivity extends AppCompatActivity {
 
     ImageView userListImageView;
     ImageView searchImageView;
@@ -42,7 +47,6 @@ public class FeedActivity extends AppCompatActivity{
 
     public ArrayList<MovieModel.Results> movieResults;
     public RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +139,12 @@ public class FeedActivity extends AppCompatActivity{
         });
 
     }
+
+
+
+
+
+
 
 
 

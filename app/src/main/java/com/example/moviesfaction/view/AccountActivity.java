@@ -87,6 +87,14 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        listImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccountActivity.this,ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         homeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

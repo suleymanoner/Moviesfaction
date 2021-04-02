@@ -1,5 +1,6 @@
 package com.example.moviesfaction.service;
 
+import com.example.moviesfaction.model.MovieDetailsModel;
 import com.example.moviesfaction.model.MovieModel;
 
 import retrofit2.Call;
@@ -41,6 +42,13 @@ public interface ApiService {
 
 
 
+    //https://api.themoviedb.org/3/movie/791373?api_key=1bf3c5469807a4b8cb7a0a8a888014b0
+
+    @GET("/3/movie/{movie_id}")
+    Call<MovieDetailsModel> getDetails(
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String api_key
+    );
 
 
 
