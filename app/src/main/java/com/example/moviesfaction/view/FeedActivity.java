@@ -66,22 +66,6 @@ public class FeedActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        searchImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FeedActivity.this,SearchActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        accountImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FeedActivity.this,AccountActivity.class);
-                startActivity(intent);
-            }
-        });
-
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,18 +73,23 @@ public class FeedActivity extends AppCompatActivity {
             }
         });
 
-        userListImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FeedActivity.this,ListActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         loadMovies(page);
+    }
 
+    public void goAccount(View view){
+        Intent intent1 = new Intent(FeedActivity.this, AccountActivity.class);
+        startActivity(intent1);
+    }
 
+    public void goSearch(View view){
+        Intent intent1 = new Intent(FeedActivity.this, SearchActivity.class);
+        startActivity(intent1);
+    }
+
+    public void goList(View view){
+        Intent intent1 = new Intent(FeedActivity.this, ListActivity.class);
+        startActivity(intent1);
     }
 
 

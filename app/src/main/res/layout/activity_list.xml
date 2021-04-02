@@ -32,6 +32,7 @@
             android:id="@+id/homeListImageViewList"
             android:layout_width="105dp"
             android:layout_height="60dp"
+            android:onClick="goHome"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/home_icon" />
 
@@ -46,6 +47,7 @@
             android:id="@+id/searchImageViewList"
             android:layout_width="100dp"
             android:layout_height="60dp"
+            android:onClick="goSearch"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/search_new" />
 
@@ -53,6 +55,7 @@
             android:id="@+id/accountImageViewList"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:onClick="goAccount"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/account_new" />
     </LinearLayout>

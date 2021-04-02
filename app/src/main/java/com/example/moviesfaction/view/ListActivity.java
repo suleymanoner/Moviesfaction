@@ -66,30 +66,21 @@ public class ListActivity extends AppCompatActivity {
 
         listView.setAdapter(listAdapter);
 
+    }
 
-        homeIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(ListActivity.this, FeedActivity.class);
-                startActivity(intent1);
-            }
-        });
+    public void goHome(View view){
+        Intent intent1 = new Intent(ListActivity.this, FeedActivity.class);
+        startActivity(intent1);
+    }
 
-        searchIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(ListActivity.this, SearchActivity.class);
-                startActivity(intent1);
-            }
-        });
+    public void goSearch(View view){
+        Intent intent1 = new Intent(ListActivity.this, SearchActivity.class);
+        startActivity(intent1);
+    }
 
-        accountIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(ListActivity.this, AccountActivity.class);
-                startActivity(intent1);
-            }
-        });
+    public void goAccount(View view){
+        Intent intent1 = new Intent(ListActivity.this, AccountActivity.class);
+        startActivity(intent1);
     }
 }
 

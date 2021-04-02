@@ -138,6 +138,7 @@
             android:id="@+id/homeListImageView2"
             android:layout_width="105dp"
             android:layout_height="60dp"
+            android:onClick="goHome"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/home_icon" />
 
@@ -145,6 +146,7 @@
             android:id="@+id/userListImageView2"
             android:layout_width="105dp"
             android:layout_height="60dp"
+            android:onClick="goList"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/list_new" />
 
@@ -152,6 +154,7 @@
             android:id="@+id/searchImageView2"
             android:layout_width="100dp"
             android:layout_height="60dp"
+            android:onClick="goSearch"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/search_new" />
 

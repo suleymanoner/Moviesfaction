@@ -69,6 +69,7 @@
             android:id="@+id/homeListImageView3"
             android:layout_width="105dp"
             android:layout_height="60dp"
+            android:onClick="goHome"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/home_icon" />
 
@@ -76,6 +77,7 @@
             android:id="@+id/userListImageView3"
             android:layout_width="105dp"
             android:layout_height="60dp"
+            android:onClick="goList"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/list_new" />
 
@@ -90,6 +92,7 @@
             android:id="@+id/accountImageView3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:onClick="goAccount"
             android:paddingTop="10dp"
             app:srcCompat="@drawable/account_new" />
     </LinearLayout>

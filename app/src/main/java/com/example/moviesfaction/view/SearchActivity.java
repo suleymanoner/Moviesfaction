@@ -76,37 +76,12 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        accountImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this,AccountActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        homeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this,FeedActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        listImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SearchActivity.this,ListActivity.class);
-                startActivity(intent);
-            }
-        });
-
         nextPageSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 search(page++);
             }
         });
-
 
     }
 
@@ -155,5 +130,20 @@ public class SearchActivity extends AppCompatActivity {
             });
 
         }
+    }
+
+    public void goHome(View view){
+        Intent intent1 = new Intent(SearchActivity.this, FeedActivity.class);
+        startActivity(intent1);
+    }
+
+    public void goAccount(View view){
+        Intent intent1 = new Intent(SearchActivity.this, AccountActivity.class);
+        startActivity(intent1);
+    }
+
+    public void goList(View view){
+        Intent intent1 = new Intent(SearchActivity.this, ListActivity.class);
+        startActivity(intent1);
     }
 }

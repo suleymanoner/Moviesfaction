@@ -79,32 +79,7 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        searchImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AccountActivity.this,SearchActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        listImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AccountActivity.this,ListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        homeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AccountActivity.this,FeedActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
-
 
     public void loadAccountDetails(){
 
@@ -197,6 +172,21 @@ public class AccountActivity extends AppCompatActivity {
         });
 
         signOutAlert.create().show();
+    }
+
+    public void goHome(View view){
+        Intent intent1 = new Intent(AccountActivity.this, FeedActivity.class);
+        startActivity(intent1);
+    }
+
+    public void goSearch(View view){
+        Intent intent1 = new Intent(AccountActivity.this, SearchActivity.class);
+        startActivity(intent1);
+    }
+
+    public void goList(View view){
+        Intent intent1 = new Intent(AccountActivity.this, ListActivity.class);
+        startActivity(intent1);
     }
 
 }
