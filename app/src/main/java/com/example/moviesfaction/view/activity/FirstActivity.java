@@ -1,4 +1,4 @@
-package com.example.moviesfaction.view;
+package com.example.moviesfaction.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +38,7 @@ public class FirstActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null){
-            Intent intent = new Intent(FirstActivity.this,FeedActivity.class);
+            Intent intent = new Intent(FirstActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -55,7 +55,7 @@ public class FirstActivity extends AppCompatActivity {
             firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    Intent intent = new Intent(getApplicationContext(), FeedActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

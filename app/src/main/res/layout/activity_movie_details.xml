@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/main_background"
-    tools:context=".view.MovieDetails">
+    android:background="@drawable/gradient_background"
+    tools:context=".view.activity.MovieDetailsActivity">
 
 
     <ImageView
         android:id="@+id/movieDetailsTitleImage"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/movie_details_title" />
 

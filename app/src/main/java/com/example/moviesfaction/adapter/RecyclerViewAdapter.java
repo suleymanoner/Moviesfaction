@@ -3,7 +3,6 @@ package com.example.moviesfaction.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,11 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.moviesfaction.view.MovieDetails;
-import com.example.moviesfaction.view.ListActivity;
+import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.model.MovieModel;
-import com.example.moviesfaction.view.FeedActivity;
 
 import java.util.ArrayList;
 
@@ -84,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             if (posterPath == null) {
                 holder.posterImage.setImageDrawable(context.getDrawable(R.drawable.no_poster));
             } else {
-                Glide.with(context).load(FeedActivity.BASE_PHOTO_URL + posterPath).into(holder.posterImage);
+                Glide.with(context).load(MovieDetailsActivity.BASE_PHOTO_URL + posterPath).into(holder.posterImage);
             }
 
             int finalPosition = position;
@@ -124,16 +121,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             editor.putString(String.valueOf(2),posterpath);
             editor.apply();
 
-            Intent intent1 = new Intent(context,ListActivity.class);
-            context.startActivity(intent1);
-
             return true;
 
         }
         else if(item.getItemId() == R.id.menuShowDetails){
 
             int movieId = resultList.get(pos).getMovieId();
-            Intent intent1 = new Intent(context, MovieDetails.class);
+            Intent intent1 = new Intent(context, MovieDetailsActivity.class);
             intent1.putExtra("movie_id",movieId);
             context.startActivity(intent1);
             return true;

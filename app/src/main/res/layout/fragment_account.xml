@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background"
-    tools:context=".view.AccountActivity">
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/emailTitleTXT2"
@@ -122,49 +121,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/homeListImageView2"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:onClick="goHome"
-            android:paddingTop="10dp"
-            app:srcCompat="@drawable/home_icon" />
-
-        <ImageView
-            android:id="@+id/userListImageView2"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:onClick="goList"
-            android:paddingTop="10dp"
-            app:srcCompat="@drawable/list_new" />
-
-        <ImageView
-            android:id="@+id/searchImageView2"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:onClick="goSearch"
-            android:paddingTop="10dp"
-            app:srcCompat="@drawable/search_new" />
-
-        <ImageView
-            android:id="@+id/accountImageView2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingTop="10dp"
-            app:srcCompat="@drawable/account_new" />
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/accountTitleImage"

@@ -1,20 +1,23 @@
-package com.example.moviesfaction.view;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.moviesfaction.view.fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import com.example.moviesfaction.R;
+import com.example.moviesfaction.view.activity.FirstActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +25,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AccountActivity extends AppCompatActivity {
+public class AccountFragment extends Fragment {
 
     ImageView accountTitleImage;
     TextView nameTitle;
@@ -33,32 +36,26 @@ public class AccountActivity extends AppCompatActivity {
     TextView emailEmptyText;
     TextView resetPassword;
     TextView signOut;
-    ImageView listImage;
-    ImageView searchImage;
-    ImageView accountImage;
-    ImageView homeImage;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
 
-        accountTitleImage = findViewById(R.id.accountTitleImage);
-        nameTitle = findViewById(R.id.nameTitleText2);
-        surnameTitle = findViewById(R.id.surnameTitleText2);
-        emailTitle = findViewById(R.id.emailTitleTXT);
-        nameEmptyText = findViewById(R.id.nameEmptyTXT);
-        surnameEmptyText = findViewById(R.id.surnameEmptyTXT);
-        emailEmptyText = findViewById(R.id.emailEmptyTXT);
-        resetPassword = findViewById(R.id.resetPasswordTitleTXT);
-        signOut = findViewById(R.id.signOutTitleTXT);
-        listImage = findViewById(R.id.userListImageView2);
-        searchImage = findViewById(R.id.searchImageView2);
-        accountImage = findViewById(R.id.accountImageView2);
-        homeImage = findViewById(R.id.homeListImageView2);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_account,container,false);
+
+        accountTitleImage = v.findViewById(R.id.accountTitleImage);
+        nameTitle = v.findViewById(R.id.nameTitleText2);
+        surnameTitle = v.findViewById(R.id.surnameTitleText2);
+        emailTitle = v.findViewById(R.id.emailTitleTXT);
+        nameEmptyText = v.findViewById(R.id.nameEmptyTXT);
+        surnameEmptyText = v.findViewById(R.id.surnameEmptyTXT);
+        emailEmptyText = v.findViewById(R.id.emailEmptyTXT);
+        resetPassword = v.findViewById(R.id.resetPasswordTitleTXT);
+        signOut = v.findViewById(R.id.signOutTitleTXT);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -79,6 +76,8 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+
+        return v;
     }
 
     public void loadAccountDetails(){
@@ -103,15 +102,16 @@ public class AccountActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AccountActivity.this, "There is no document here!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "There is no document here!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void resetPassword(){
 
-        EditText resetMail = new EditText(AccountActivity.this);
-        AlertDialog.Builder resetPass = new AlertDialog.Builder(AccountActivity.this);
+        EditText resetMail = new EditText(getContext());
+        resetMail.setText(emailEmptyText.getText().toString());
+        AlertDialog.Builder resetPass = new AlertDialog.Builder(getContext());
         resetPass.setTitle("Reset Password");
         resetPass.setMessage("Enter your email.");
         resetPass.setView(resetMail);
@@ -121,18 +121,18 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 if(resetMail.getText().toString().isEmpty()){
-                    Toast.makeText(AccountActivity.this, "Please enter your email!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please enter your email!", Toast.LENGTH_SHORT).show();
                 } else{
                     String email = resetMail.getText().toString();
                     firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(AccountActivity.this, "Reset link sent!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Reset link sent!", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AccountActivity.this, "Link not sent : " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Link not sent : " + e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -142,7 +142,6 @@ public class AccountActivity extends AppCompatActivity {
         resetPass.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 
@@ -151,7 +150,7 @@ public class AccountActivity extends AppCompatActivity {
 
     public void signOut(){
 
-        AlertDialog.Builder signOutAlert = new AlertDialog.Builder(AccountActivity.this);
+        AlertDialog.Builder signOutAlert = new AlertDialog.Builder(getContext());
         signOutAlert.setTitle("Sign Out");
         signOutAlert.setMessage("Are you sure?");
 
@@ -159,9 +158,8 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 firebaseAuth.signOut();
-                Intent intent = new Intent(AccountActivity.this,FirstActivity.class);
+                Intent intent = new Intent(getContext(), FirstActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -174,19 +172,5 @@ public class AccountActivity extends AppCompatActivity {
         signOutAlert.create().show();
     }
 
-    public void goHome(View view){
-        Intent intent1 = new Intent(AccountActivity.this, FeedActivity.class);
-        startActivity(intent1);
-    }
-
-    public void goSearch(View view){
-        Intent intent1 = new Intent(AccountActivity.this, SearchActivity.class);
-        startActivity(intent1);
-    }
-
-    public void goList(View view){
-        Intent intent1 = new Intent(AccountActivity.this, ListActivity.class);
-        startActivity(intent1);
-    }
 
 }

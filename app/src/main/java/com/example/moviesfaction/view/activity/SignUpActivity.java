@@ -1,4 +1,4 @@
-package com.example.moviesfaction.view;
+package com.example.moviesfaction.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     });
 
-                    Intent intent = new Intent(getApplicationContext(), FeedActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();                }
             }).addOnFailureListener(new OnFailureListener() {

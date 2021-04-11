@@ -14,7 +14,8 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.model.List;
-import com.example.moviesfaction.view.FeedActivity;
+import com.example.moviesfaction.model.MovieDetailsModel;
+import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class ListAdapter extends ArrayAdapter<List> {
         ImageView poster = convertView.findViewById(R.id.postermimagelist);
 
         title.setText(getItem(position).getTitle());
-        Glide.with(context).load(FeedActivity.BASE_PHOTO_URL + getItem(position).getPosterpath()).into(poster);
+        Glide.with(context).load(MovieDetailsActivity.BASE_PHOTO_URL + getItem(position).getPosterpath()).into(poster);
 
         return convertView;
     }

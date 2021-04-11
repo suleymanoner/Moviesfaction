@@ -1,26 +1,23 @@
-package com.example.moviesfaction.view;
+package com.example.moviesfaction.view.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.Toast;
-
 import com.example.moviesfaction.R;
-import com.example.moviesfaction.adapter.ListAdapter;
 import com.example.moviesfaction.adapter.RecyclerViewAdapter;
 import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.service.ApiService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,14 +28,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FeedActivity extends AppCompatActivity {
+public class HomeFragment extends Fragment {
 
-    ImageView userListImageView;
-    ImageView searchImageView;
-    ImageView accountImageView;
-    ImageView homeImageView;
-    Button nextPage;
-    int page=1;
+    
+    FloatingActionButton backPage;
+    FloatingActionButton nextPage;
+    RecyclerView recyclerView;
+
+    int page = 1;
 
     public String BASE_URL = "https://api.themoviedb.org";
     public static final String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
@@ -46,20 +43,18 @@ public class FeedActivity extends AppCompatActivity {
     public Retrofit retrofit;
 
     public ArrayList<MovieModel.Results> movieResults;
-    public RecyclerView recyclerView;
 
+
+
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        userListImageView = findViewById(R.id.userListImageView);
-        searchImageView = findViewById(R.id.searchImageView);
-        accountImageView = findViewById(R.id.accountImageView);
-        homeImageView = findViewById(R.id.homeListImageView);
-        nextPage= findViewById(R.id.nextPage);
-
-        recyclerView = findViewById(R.id.recyclerView);
+        View v = inflater.inflate(R.layout.fragment_home,container,false);
+        backPage = v.findViewById(R.id.backPage);
+        nextPage = v.findViewById(R.id.nextPage);
+        recyclerView = v.findViewById(R.id.recyclerView);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -69,28 +64,24 @@ public class FeedActivity extends AppCompatActivity {
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadMovies(page++);
+                nextPage();
+            }
+        });
+
+        backPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backPage();
             }
         });
 
 
         loadMovies(page);
+
+
+        return v;
     }
 
-    public void goAccount(View view){
-        Intent intent1 = new Intent(FeedActivity.this, AccountActivity.class);
-        startActivity(intent1);
-    }
-
-    public void goSearch(View view){
-        Intent intent1 = new Intent(FeedActivity.this, SearchActivity.class);
-        startActivity(intent1);
-    }
-
-    public void goList(View view){
-        Intent intent1 = new Intent(FeedActivity.this, ListActivity.class);
-        startActivity(intent1);
-    }
 
 
     public void loadMovies(int page){
@@ -109,11 +100,9 @@ public class FeedActivity extends AppCompatActivity {
                     List<MovieModel.Results> list = movieModel.getResults();
                     movieResults = new ArrayList<>(list);
 
-                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(movieResults,getApplicationContext());
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(movieResults,getContext());
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                     recyclerView.setLayoutManager(layoutManager);
-                    //SpaceItemDecorator decorator = new SpaceItemDecorator(5);
-                    //recyclerView.addItemDecoration(decorator);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     recyclerView.setAdapter(adapter);
 
@@ -122,9 +111,32 @@ public class FeedActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MovieModel> call, Throwable t) {
-                Toast.makeText(FeedActivity.this, "Data couldn't load!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Data couldn't load!", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+    public void nextPage(){
+        if(page < 0 ){
+            Toast.makeText(getContext(), "Last Page!", Toast.LENGTH_SHORT).show();
+        } else{
+            page = page + 1 ;
+            loadMovies(page);
+        }
+    }
+
+    public void backPage(){
+        if(page < 0 || page == 1){
+            Toast.makeText(getContext(), "Last Page!", Toast.LENGTH_SHORT).show();
+        } else{
+            page = page - 1;
+            if(page == 1){
+                loadMovies(page);
+            } else{
+                loadMovies(page);
+            }
+        }
+    }
 }
+

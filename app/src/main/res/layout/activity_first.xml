@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/batman4_1"
-    tools:context=".view.FirstActivity">
+    tools:context=".view.activity.FirstActivity">
 
     <ImageView
         android:id="@+id/moviesfactionTitleImage"
@@ -29,24 +29,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
-
-    <Button
-        android:id="@+id/signupButton2"
-        android:layout_width="115dp"
-        android:layout_height="45dp"
-        android:background="@drawable/button_style"
-        android:fontFamily="@font/raleway"
-        android:onClick="signupClick"
-        android:text="SIGN UP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.454" />
 
     <Button
         android:id="@+id/signinButton"
@@ -58,25 +44,41 @@
         android:text="SIGN IN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="@+id/passwordEditText"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.091" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/edittext_style"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+
+    <Button
+        android:id="@+id/signupButton2"
+        android:layout_width="115dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/raleway"
+        android:onClick="signupClick"
+        android:text="SIGN UP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.091" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -21,7 +21,7 @@
             android:layout_height="100dp"
             android:layout_weight="0"
             android:paddingTop="10dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/loading_image" />
 
         <TextView
             android:id="@+id/movietitlelist"

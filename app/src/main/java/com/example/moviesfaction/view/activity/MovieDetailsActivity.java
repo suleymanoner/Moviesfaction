@@ -1,11 +1,10 @@
-package com.example.moviesfaction.view;
+package com.example.moviesfaction.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,7 +22,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MovieDetails extends AppCompatActivity {
+public class MovieDetailsActivity extends AppCompatActivity {
 
     ImageView movieDetailsPoster;
     ImageView movieDetailsTitleImage;
@@ -37,6 +36,7 @@ public class MovieDetails extends AppCompatActivity {
 
     public String BASE_URL = "https://api.themoviedb.org";
     public String API_KEY = "1bf3c5469807a4b8cb7a0a8a888014b0";
+    public static final String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
     public Retrofit retrofit;
 
     @Override
@@ -77,9 +77,9 @@ public class MovieDetails extends AppCompatActivity {
                     String posterPath = model.getPoster_path();
 
                     if (posterPath == null) {
-                        movieDetailsPoster.setImageDrawable(MovieDetails.this.getDrawable(R.drawable.no_poster));
+                        movieDetailsPoster.setImageDrawable(MovieDetailsActivity.this.getDrawable(R.drawable.no_poster));
                     } else {
-                        Glide.with(MovieDetails.this).load(FeedActivity.BASE_PHOTO_URL + posterPath).into(movieDetailsPoster);
+                        Glide.with(MovieDetailsActivity.this).load(BASE_PHOTO_URL + posterPath).into(movieDetailsPoster);
                     }
 
                     titleDetails.setText(model.getOriginal_title());
@@ -87,12 +87,13 @@ public class MovieDetails extends AppCompatActivity {
                     voteDetails.setText("Vote : " + model.getVote_average());
                     overviewDetails.setText(model.getOverview());
                     homepageLink.setText(model.getHomepage());
+
                 }
             }
 
             @Override
             public void onFailure(Call<MovieDetailsModel> call, Throwable t) {
-                Toast.makeText(MovieDetails.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MovieDetailsActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -116,7 +117,7 @@ public class MovieDetails extends AppCompatActivity {
 
     public void goToWebsite(){
         if(homepageLink.getText().toString().isEmpty()){
-            Toast.makeText(MovieDetails.this, "No Homepage of movie!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MovieDetailsActivity.this, "No Homepage of movie!", Toast.LENGTH_SHORT).show();
         }
         else{
             Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(homepageLink.getText().toString()));
