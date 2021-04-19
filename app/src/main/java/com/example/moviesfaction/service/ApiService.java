@@ -10,7 +10,9 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    //https://api.themoviedb.org/3/movie/popular?api_key=1bf3c5469807a4b8cb7a0a8a888014b0
+    //https://api.themoviedb.org/3/movie/popular?
+    //
+    // api_key=1bf3c5469807a4b8cb7a0a8a888014b0
 
     @GET("/3/movie/{category}")
     Call<MovieModel> getMovies(

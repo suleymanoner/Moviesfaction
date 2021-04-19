@@ -59,6 +59,8 @@ public class SearchFragment extends Fragment {
         searchButton = v.findViewById(R.id.searchButton);
         recyclerView2 = v.findViewById(R.id.recyclerView2);
 
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -84,6 +86,10 @@ public class SearchFragment extends Fragment {
                 backPage();
             }
         });
+
+
+
+
 
 
 

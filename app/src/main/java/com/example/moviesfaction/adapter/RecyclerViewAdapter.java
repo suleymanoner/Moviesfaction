@@ -84,7 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Glide.with(context).load(MovieDetailsActivity.BASE_PHOTO_URL + posterPath).into(holder.posterImage);
             }
 
-            int finalPosition = position;
+
             holder.addIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

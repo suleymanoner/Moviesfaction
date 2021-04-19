@@ -42,7 +42,7 @@ public class FirstActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-           }
+    }
 
     public void signinClick(View view){
         String email = emailEditText.getText().toString().trim();
