@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.moviesfaction.R;
+import com.example.moviesfaction.database.MovieData;
 import com.example.moviesfaction.model.MovieDetailsModel;
 import com.example.moviesfaction.service.ApiService;
+import com.example.moviesfaction.view.fragment.ListFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,11 +35,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
     Button homepageButton;
     TextView homepageLink;
     Button trailerButton;
+    ImageView detailsFavorite;
 
     public String BASE_URL = "https://api.themoviedb.org";
     public String API_KEY = "1bf3c5469807a4b8cb7a0a8a888014b0";
     public static final String BASE_PHOTO_URL = "https://image.tmdb.org/t/p/w500";
     public Retrofit retrofit;
+    int id = 0;
+    String posterPath = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         homepageButton = findViewById(R.id.homepageButton);
         homepageLink = findViewById(R.id.homepageLinkTitle);
         trailerButton = findViewById(R.id.trailerButton);
+        detailsFavorite = findViewById(R.id.detailsActivityFavorite);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -60,7 +66,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 .build();
 
         Intent intent = getIntent();
-        int id = intent.getIntExtra("movie_id",791373);
+        id = intent.getIntExtra("movie_id",791373);
 
         ApiService apiService = retrofit.create(ApiService.class);
 
@@ -74,7 +80,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                     MovieDetailsModel model = response.body();
 
-                    String posterPath = model.getPoster_path();
+                    posterPath = model.getPoster_path();
 
                     if (posterPath == null) {
                         movieDetailsPoster.setImageDrawable(MovieDetailsActivity.this.getDrawable(R.drawable.no_poster));
@@ -112,6 +118,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         });
 
+        detailsFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favorite();
+            }
+        });
+
     }
 
 
@@ -129,5 +142,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
         String movie = titleDetails.getText().toString() + " trailer";
         Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=" + movie));
         startActivity(intent1);
+    }
+
+    public void favorite(){
+        MovieData movieData = new MovieData(id,titleDetails.getText().toString(),posterPath);
+
+        ListFragment.viewModel.insert(movieData);
+
+        Toast.makeText(this, "Movie added!", Toast.LENGTH_SHORT).show();
     }
 }

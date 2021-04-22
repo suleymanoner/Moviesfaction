@@ -124,6 +124,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             if(checkNewMovie == 0){
                 ListFragment.viewModel.insert(movieData);
+                Toast.makeText(context, "Movie added!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "You already have that movie in list!", Toast.LENGTH_SHORT).show();
             }
