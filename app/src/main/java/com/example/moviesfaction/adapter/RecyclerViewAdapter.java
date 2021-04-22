@@ -11,14 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.moviesfaction.database.MovieData;
 import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.model.MovieModel;
+import com.example.moviesfaction.view.fragment.ListFragment;
 
 import java.util.ArrayList;
 
@@ -27,7 +30,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ArrayList<MovieModel.Results> resultList;
     public Context context;
     public int pos = -1;
-    public static SharedPreferences sharedPreferences;
 
 
     public RecyclerViewAdapter(ArrayList<MovieModel.Results> list, Context context) {
@@ -112,14 +114,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if(item.getItemId() == R.id.menuAdd){
 
+            int movie_id = resultList.get(pos).getMovieId();
             String title = resultList.get(pos).getTitle();
             String posterpath = resultList.get(pos).getPoster_path();
 
-            sharedPreferences = context.getSharedPreferences("Save", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(String.valueOf(1),title);
-            editor.putString(String.valueOf(2),posterpath);
-            editor.apply();
+            MovieData movieData = new MovieData(movie_id,title,posterpath);
+
+            int checkNewMovie = movieData.getID();
+
+            if(checkNewMovie == 0){
+                ListFragment.viewModel.insert(movieData);
+            } else {
+                Toast.makeText(context, "You already have that movie in list!", Toast.LENGTH_SHORT).show();
+            }
+
 
             return true;
 

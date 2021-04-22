@@ -13,12 +13,10 @@
         android:layout_gravity="center"
         app:srcCompat="@drawable/yourlist" />
 
-
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoritesListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="40" />
+        android:layout_height="match_parent" />
 
 
     //android:layout_marginBottom="?attr/actionBarSize"

@@ -1,30 +1,43 @@
 package com.example.moviesfaction.view.fragment;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moviesfaction.R;
-import com.example.moviesfaction.adapter.ListAdapter;
-import com.example.moviesfaction.model.List;
+import com.example.moviesfaction.adapter.FavoritesAdapter;
+import com.example.moviesfaction.database.MovieData;
+import com.example.moviesfaction.database.RoomDB;
+import com.example.moviesfaction.model.MovieDataViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class ListFragment extends Fragment {
 
     ImageView listTitleImage;
-    ListView listView;
+    RecyclerView favoritesRecycler;
 
-    public static SharedPreferences sharedPreferences;
+    List<MovieData> dataList = new ArrayList<>();
+
+    FavoritesAdapter adapter;
+
+    public static MovieDataViewModel viewModel;
+
+
 
     @Nullable
     @Override
@@ -32,20 +45,25 @@ public class ListFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_list,container,false);
         listTitleImage = v.findViewById(R.id.listTitleImage);
-        listView = v.findViewById(R.id.listView);
+        favoritesRecycler = v.findViewById(R.id.favoritesListRecyclerView);
 
-        sharedPreferences = getContext().getSharedPreferences("Save", Context.MODE_PRIVATE);
+        favoritesRecycler.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
-        String title = sharedPreferences.getString(String.valueOf(1),"No movie");
-        String poster = sharedPreferences.getString(String.valueOf(2),"No poster");
+        favoritesRecycler.setHasFixedSize(true);
 
-        ArrayList<List> list = new ArrayList<>();
+        adapter = new FavoritesAdapter(v.getContext(),dataList);
 
-        list.add(new List(title,poster));
+        favoritesRecycler.setAdapter(adapter);
 
-        ListAdapter listAdapter = new ListAdapter(getContext(),R.layout.movie_list,list);
+        viewModel = ViewModelProviders.of(this).get(MovieDataViewModel.class);
 
-        listView.setAdapter(listAdapter);
+        viewModel.getListLiveData().observe(this, new Observer<List<MovieData>>() {
+            @Override
+            public void onChanged(List<MovieData> movieData) {
+                adapter.setDataList(movieData);
+            }
+        });
+
 
         return v;
     }
