@@ -28,8 +28,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     private List<MovieData> dataList = new ArrayList<>();
     private Context context;
-    private RoomDB database;
-
 
 
     public FavoritesAdapter(Context context, List<MovieData> list){
@@ -39,13 +37,11 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     }
 
 
-
     @NonNull
     @Override
     public FavoritesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorites_list,parent,false);
-
         return new ViewHolder(view);
     }
 
@@ -65,7 +61,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
                 MovieData data = dataList.get(holder.getAdapterPosition());
 
                 ListFragment.viewModel.delete(data);
-
                 int position = holder.getAdapterPosition();
                 dataList.remove(position);
                 notifyItemRemoved(position);
@@ -83,10 +78,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             }
         });
 
-
-
-
-
     }
 
 
@@ -94,7 +85,6 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         this.dataList = dataList;
         notifyDataSetChanged();
     }
-
 
 
     @Override
@@ -117,6 +107,4 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             detailsButton = itemView.findViewById(R.id.detailsButton);
         }
     }
-
-
 }

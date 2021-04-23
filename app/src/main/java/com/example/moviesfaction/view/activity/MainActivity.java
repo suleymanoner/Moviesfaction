@@ -2,6 +2,7 @@ package com.example.moviesfaction.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -23,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark_Moviesfaction);
+        } else{
+            setTheme(R.style.Theme_Moviesfaction);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

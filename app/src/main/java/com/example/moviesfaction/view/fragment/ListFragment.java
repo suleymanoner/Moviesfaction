@@ -32,11 +32,8 @@ public class ListFragment extends Fragment {
     RecyclerView favoritesRecycler;
 
     List<MovieData> dataList = new ArrayList<>();
-
     FavoritesAdapter adapter;
-
     public static MovieDataViewModel viewModel;
-
 
 
     @Nullable
@@ -63,7 +60,6 @@ public class ListFragment extends Fragment {
                 adapter.setDataList(movieData);
             }
         });
-
 
         return v;
     }

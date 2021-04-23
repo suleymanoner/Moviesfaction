@@ -1,7 +1,6 @@
 package com.example.moviesfaction.database;
 
 import android.app.Application;
-import android.graphics.Movie;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
@@ -14,9 +13,10 @@ public class MovieDataRepository {
 
     private Dao dao;
     private LiveData<List<MovieData>> listLiveData;
+    private RoomDB database;
 
     public MovieDataRepository(Application application){
-        RoomDB database = RoomDB.getInstance(application);
+        database = RoomDB.getInstance(application);
         dao = database.dao();
         listLiveData = dao.getAllData();
     }
@@ -27,6 +27,10 @@ public class MovieDataRepository {
 
     public void delete(MovieData movieData){
         new deleteAsyncTask(dao).execute(movieData);
+    }
+
+    public int getDatabaseMovie(int id){
+        return database.dao().getDatabaseMovie(id);
     }
 
     public LiveData<List<MovieData>> getListLiveData(){
@@ -64,8 +68,4 @@ public class MovieDataRepository {
             return null;
         }
     }
-
-
-
-
 }

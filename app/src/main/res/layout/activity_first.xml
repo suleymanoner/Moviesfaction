@@ -5,7 +5,7 @@
     android:theme="@style/EditTextHint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/batman4_1"
+    android:background="@drawable/first_activity_photo"
     tools:context=".view.activity.FirstActivity">
 
     <ImageView
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/moviesfaction_logo" />
+        app:srcCompat="@drawable/moviesfaction" />
 
     <EditText
         android:id="@+id/emailEditText"

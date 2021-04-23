@@ -15,7 +15,7 @@
         android:layout_height="40dp"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
-        app:srcCompat="@drawable/movie_details_title" />
+        app:srcCompat="@drawable/movie_details" />
 
     <ImageView
         android:id="@+id/movieDetailsPosterImage"

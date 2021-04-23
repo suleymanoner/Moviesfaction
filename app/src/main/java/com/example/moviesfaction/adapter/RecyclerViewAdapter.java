@@ -2,7 +2,7 @@ package com.example.moviesfaction.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,10 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviesfaction.database.MovieData;
+import com.example.moviesfaction.database.RoomDB;
+import com.example.moviesfaction.model.MovieDataViewModel;
+import com.example.moviesfaction.service.Dao;
 import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.model.MovieModel;
@@ -53,7 +58,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             movieName = itemView.findViewById(R.id.movieNameText);
             date = itemView.findViewById(R.id.dateText);
             overview = itemView.findViewById(R.id.overviewText);
-
         }
     }
 
@@ -62,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list_2, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -120,15 +124,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             MovieData movieData = new MovieData(movie_id,title,posterpath);
 
-            int checkNewMovie = movieData.getID();
+            int checkInDatabase = RoomDB.database.dao().getDatabaseMovie(movie_id);
 
-            if(checkNewMovie == 0){
+            if(checkInDatabase == 0){
                 ListFragment.viewModel.insert(movieData);
-                Toast.makeText(context, "Movie added!", Toast.LENGTH_SHORT).show();
-            } else {
+                Toast.makeText(context, "Added!", Toast.LENGTH_SHORT).show();
+            } else{
                 Toast.makeText(context, "You already have that movie in list!", Toast.LENGTH_SHORT).show();
             }
-
 
             return true;
 

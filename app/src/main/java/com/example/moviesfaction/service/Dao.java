@@ -24,4 +24,7 @@ public interface Dao {
     @Query("SELECT * FROM MOVIES")
     LiveData<List<MovieData>> getAllData();
 
+    @Query("SELECT movie_id FROM MOVIES WHERE movie_id = :id")
+    int getDatabaseMovie(int id);
+
 }

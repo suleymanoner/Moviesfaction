@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.database.MovieData;
+import com.example.moviesfaction.database.RoomDB;
 import com.example.moviesfaction.model.MovieDetailsModel;
 import com.example.moviesfaction.service.ApiService;
+import com.example.moviesfaction.service.Dao;
 import com.example.moviesfaction.view.fragment.ListFragment;
 
 import retrofit2.Call;
@@ -146,9 +148,15 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     public void favorite(){
         MovieData movieData = new MovieData(id,titleDetails.getText().toString(),posterPath);
+        int id = movieData.getMovie_id();
 
-        ListFragment.viewModel.insert(movieData);
+        int checkInDatabase = RoomDB.database.dao().getDatabaseMovie(id);
 
-        Toast.makeText(this, "Movie added!", Toast.LENGTH_SHORT).show();
+        if(checkInDatabase == 0){
+            ListFragment.viewModel.insert(movieData);
+            Toast.makeText(getApplicationContext(), "Added!", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(getApplicationContext(), "You already have that movie in list!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
