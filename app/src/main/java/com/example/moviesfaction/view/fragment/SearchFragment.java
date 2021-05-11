@@ -1,5 +1,6 @@
 package com.example.moviesfaction.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.moviesfaction.R;
 import com.example.moviesfaction.adapter.RecyclerViewAdapter;
 import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.service.ApiService;
+import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -86,13 +88,6 @@ public class SearchFragment extends Fragment {
                 backPage();
             }
         });
-
-
-
-
-
-
-
 
 
         return v;
@@ -174,6 +169,5 @@ public class SearchFragment extends Fragment {
             }
         }
     }
-
 
 }

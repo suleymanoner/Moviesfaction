@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.moviesfaction.R;
 import com.example.moviesfaction.database.MovieData;
 import com.example.moviesfaction.database.RoomDB;
+import com.example.moviesfaction.model.MovieModel;
 import com.example.moviesfaction.view.activity.MovieDetailsActivity;
 import com.example.moviesfaction.view.fragment.HomeFragment;
 import com.example.moviesfaction.view.fragment.ListFragment;

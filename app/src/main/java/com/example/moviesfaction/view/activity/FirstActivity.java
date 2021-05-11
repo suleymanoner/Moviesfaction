@@ -40,7 +40,7 @@ public class FirstActivity extends AppCompatActivity {
         if(firebaseUser != null){
             Intent intent = new Intent(FirstActivity.this, MainActivity.class);
             startActivity(intent);
-            finish();
+            //finish();
         }
     }
 
