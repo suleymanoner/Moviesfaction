@@ -15,17 +15,17 @@ When users logged in, they will see home screen with most popular movies. Users 
 ![moviesfaction-home](https://user-images.githubusercontent.com/71967979/120936150-35479600-c6bb-11eb-9964-3c7cc96a133a.png)
 
 
-When users want to add movie in their list, they should click arrow on the movie and they will have two option; add list and show details. If users choose show details, they will directly go to details screen. 
+When users want to add movie in their list, they should click arrow on the movie and they will have two option; add list and show details. If users choose show details, they will directly go to details screen. In this screen, users can add that movie in their list with using heart button. Also users can go to see movie's trailer with trailer button and go movie's website if it exists.
 
 ![moviesfaction-details](https://user-images.githubusercontent.com/71967979/120936231-abe49380-c6bb-11eb-9e94-2d8a9ced30db.png)
 
 
-If users choose add list, movie will be added in their list.
+If users choose add list, movie will be added in their list. Users also can go details of movies in their list with using details button. Also if users want to delete that movie in their list, they can use delete button in list. 
 
 ![moviesfaction-list](https://user-images.githubusercontent.com/71967979/120936278-ed753e80-c6bb-11eb-84a0-b40e7035737a.png)
 
 
-Also users can search the movie. All they have to do is writing movie's name and click search button.
+Also users can search the movie. All they have to do is writing movie's name and click search button. They can add movies in results to their list. Also they can go to details of one of the results. 
 
 ![moviesfaction-search](https://user-images.githubusercontent.com/71967979/120936332-15fd3880-c6bc-11eb-868d-15e96db270eb.png)
 
