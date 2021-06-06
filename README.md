@@ -33,3 +33,5 @@ Also users can search the movie. All they have to do is writing movie's name and
 Users can see their account informations in account screen. Also they can sign-out and reset their password in this screen. 
 
 ![moviesfaction-account](https://user-images.githubusercontent.com/71967979/120936363-3f1dc900-c6bc-11eb-9ebd-8179549203a2.png)
+
+API in the application taken from : https://www.themoviedb.org
